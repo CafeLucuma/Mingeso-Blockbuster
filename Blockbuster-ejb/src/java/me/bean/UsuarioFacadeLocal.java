@@ -25,6 +25,8 @@ public interface UsuarioFacadeLocal {
     Usuario find(Object id);
 
     List<Usuario> findAll();
+    
+    List<Usuario> login(String name, String pass);
 
     List<Usuario> findRange(int[] range);
 

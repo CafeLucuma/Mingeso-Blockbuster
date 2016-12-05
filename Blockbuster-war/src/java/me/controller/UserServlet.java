@@ -6,12 +6,14 @@
 package me.controller;
 
 import java.io.IOException;
+import java.util.List;
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import me.bean.UsuarioFacadeLocal;
 import me.model.Usuario;
 
@@ -25,7 +27,7 @@ public class UserServlet extends HttpServlet {
     private UsuarioFacadeLocal usuarioFacade;
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String action = request.getParameter("action");
+        /*String action = request.getParameter("action");
         String userIdStr = request.getParameter("userId");
         int userId = 0;
         if(userIdStr != null && !userIdStr.equals(""))
@@ -45,8 +47,22 @@ public class UserServlet extends HttpServlet {
         }
         
         request.setAttribute("usuario", usuario);
-        request.setAttribute("allUsuarios", usuarioFacade.findAll());
-        request.getRequestDispatcher("userinfo.jsp").forward(request, response);
+        */
+        String username = request.getParameter("userName");
+        String password = request.getParameter("password");
+        
+        List<Usuario> user = usuarioFacade.login(username, password);
+        if(user.isEmpty())
+        {
+            request.setAttribute("allUsuarios", usuarioFacade.findAll());
+            request.getRequestDispatcher("userinfo.jsp").forward(request, response);
+        }
+        else
+        {
+            HttpSession sesion = request.getSession(true);
+            sesion.setAttribute("welcome", user.get(0));
+            response.sendRedirect("productosIndex");
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

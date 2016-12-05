@@ -35,6 +35,13 @@ public class UsuarioFacade extends AbstractFacade<Usuario> implements UsuarioFac
     {
         return em.createNamedQuery("Usuario.findAll").getResultList();
     }
+    
+    @Override
+    public List<Usuario> login(String name, String pass)
+    {
+        return em.createNamedQuery("Usuario.login").setParameter("username", name)
+                .setParameter("password", pass).getResultList();
+    }
 
     @Override
     public void create(Usuario usuario)

@@ -13,6 +13,8 @@
         <title>JSP Page</title>
     </head>
     <body>
+        <b>Bienvenido, ${sessionScope.welcome.username}</b>
+        
         <h1>Productos Disponibles</h1>
         
         <table border="1">

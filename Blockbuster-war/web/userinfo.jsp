@@ -13,30 +13,14 @@
         <title>User Information</title>
     </head>
     <body>
-        <h1>Información de Usuario</h1>
-        <form action="./UsuarioServlet" method="POST">
-            <table>
-                <tr>
-                    <td>ID de Usuario</td>
-                    <td><input type="text" name="userId" value="${user.userid}"/></td>
-                </tr>
-                <tr>
-                    <td>Nombre de Usuario</td>
-                    <td><input type="text" name="userName" value="${user.username}"/></td>
-                </tr>
-                <tr>
-                    <td>Contrasena</td>
-                    <td><input type="text" name="password" value="${user.password}"/></td>
-                </tr>
-                <tr>
-                    <td colspan="2">
-                        <input type="submit" name="action" value="Add" />
-                        <input type="submit" name="action" value="Search" />
-                    </td>
-                </tr>
-            </table>
-            
-        </form>
+        <h1>Login Usuario</h1>
+        <div>
+            <form action="main" method="post">
+                Nombre: <input type="text" name="userName"><br>
+                Contraseña: <input type="password" name="password">
+                <input type="submit" name="submit" value="submit">
+            </form>
+        </div>
         <br>
         <table border="1">
             <th>ID</th>
