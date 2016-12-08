@@ -13,7 +13,7 @@
         <title>User Information</title>
     </head>
     <body>
-        <h1>Login Usuario</h1>
+        <h1>Login Usuario Test</h1>
         <div>
             <form action="main" method="post">
                 Nombre: <input type="text" name="userName"><br>
